@@ -19,12 +19,11 @@ const store = async (req, res) => {
     if (!user) {
         return res.status(400).json({ error: 'usuario não existe' });
     }
-
     const spot = await Spot.create({
         user: user_id,
         thumbnail: filename,
         company,
-        techs: techs.slpit(',').map(tech => tech.trim()),
+        techs: techs.split(',').map(tech => tech.trim()),
         price
     });
 
